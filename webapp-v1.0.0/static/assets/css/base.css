@@ -1,0 +1,140 @@
+
+html{height: 100%; font-family: 'Open Sans';}
+.container-fluid {
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+body::before {  
+    opacity: 0.3;
+  }
+body{background-color: rgb(255, 255, 255);
+    content: "";  
+    background-image: url(../images/codam2.jpg);
+    width: 100%;
+    position: absolute;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center top;
+    
+    margin: 0; /* Remove as margens padrão do body */
+    padding: 0; /* Remove os preenchimentos padrão do body */
+    background-size: cover;  
+    transition: background-image 30s ease-in-out, opacity 30s ease-in-out;
+    font-family: 'Open Sans';
+
+}
+.navbar{background-color: rgb(255, 255, 255); margin-bottom:2px; border-color: #043573;}
+.navbar-light .navbar-nav .nav-link{color: black;}
+.card-body {width: 100% }
+.card-header {background-color: #73040421;}
+.canvasChart{max-width: 100%;}
+.canvasRing{max-width: 100%;}
+.tableSelected{background-color: #FFD480; color:black;}
+.bigIcon{font-size: 120px;color: #043573}
+.formErrorMsg{font-size: 10px; color: red;}
+.bigInput{resize: none;}
+.indicator-square{max-width: 100%; 
+    max-height: 100%; 
+    background-color: white;
+    border-radius: 15%; 
+    width: 50px; 
+    height: 25px; 
+    border-color: blanchedalmond;}
+.carousel-indicators li {width: 100px;height: 10px;border-radius: 10%;}
+.carousel-indicators {bottom: -50px;}
+.carousel-control-prev,
+.carousel-control-next {height: 300px; width: 20px;}
+.cardImg{
+    /* 63d49ef1026df80ccd0544e4_Ribbon%20Needle%20Loom[1] 1 */
+
+    position: center;
+    width: 147px;
+    height: 147px;
+    
+
+    /* background: url(63d49ef1026df80ccd0544e4_Ribbon%20Needle%20Loom[1].png); */
+    mix-blend-mode: multiply;
+
+}
+select.form-control {-moz-appearance: none;-webkit-appearance: none;appearance: none;}
+@keyframes fa-blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+.fa-blink {
+  -webkit-animation: fa-blink .75s linear infinite;
+  -moz-animation: fa-blink .75s linear infinite;
+  -ms-animation: fa-blink .75s linear infinite;
+  -o-animation: fa-blink .75s linear infinite;
+  animation: fa-blink 1.0s linear infinite;
+}
+#takt-1{
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+#estado-setup-1{
+    -webkit-animation: fa-blink .75s linear infinite;
+    -moz-animation: fa-blink .75s linear infinite;
+    -ms-animation: fa-blink .75s linear infinite;
+    -o-animation: fa-blink .75s linear infinite;
+    animation: fa-blink .75s linear infinite;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#takt-2{
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+#estado-setup-2{
+    -webkit-animation: fa-blink .75s linear infinite;
+    -moz-animation: fa-blink .75s linear infinite;
+    -ms-animation: fa-blink .75s linear infinite;
+    -o-animation: fa-blink .75s linear infinite;
+    animation: fa-blink .75s linear infinite;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+h4{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+#takt-3{
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+#estado-setup-3{
+    -webkit-animation: fa-blink .75s linear infinite;
+    -moz-animation: fa-blink .75s linear infinite;
+    -ms-animation: fa-blink .75s linear infinite;
+    -o-animation: fa-blink .75s linear infinite;
+    animation: fa-blink .75s linear infinite;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#takt{
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+#estado-setup{
+    -webkit-animation: fa-blink .75s linear infinite;
+    -moz-animation: fa-blink .75s linear infinite;
+    -ms-animation: fa-blink .75s linear infinite;
+    -o-animation: fa-blink .75s linear infinite;
+    animation: fa-blink .75s linear infinite;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
