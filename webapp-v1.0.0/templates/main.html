@@ -91,7 +91,7 @@
         cep = document.getElementById('cep').value;
         console.log(cep);
         jQuery.ajax({
-                url:'https://viacep.com.br/ws/'+cep+ '/json/',
+                url:'localhost:5156/Cep/'+cep,
                 type: 'GET',
                 data:{},
                 headers: {},
