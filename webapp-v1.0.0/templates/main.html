@@ -69,16 +69,43 @@
                 </ul>
             </div>
         </nav>
-        <div>
-            <form id="formulario">
-                <input type="text" id="cep">
-                <button type="submit" class="btn btn-danger  w-25 mx-1 h-100" id="iniciar-parada"><i class="fas fa-stop"></i> Parar </button>
-            </form>
-        </div>
-        <div>
-            <p id="escrever">
-
-            </p>
+        <div class="row justify-content-center text-black">
+            <div class="card text-black o-hidden bg-light border-info h-100" style="width: 50rem;">
+                <div class="card-body">
+                    <p id="escrever">
+                    
+                    </p>
+                    <div class="row justify-content-center">
+                        <form id="formulario">
+                            <input type="text" class="form-control" id="cep">
+                            <button type="submit" class="btn btn-success" id="iniciar-parada"><i class="fas fa-play"></i> </button>
+                        </form>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="row">
+                            <label for="inputAddress">Bairro</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                        </div>  
+                    </div>
+                    
+                    <div class="row justify-content-center">
+                        <div class="row">
+                            <div class="row col-6">
+                                <h5>
+                                    CEP:
+                                </h5>
+                            </div>
+                            <div class="row">
+                            
+                                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                            </div>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 
@@ -91,7 +118,8 @@
         cep = document.getElementById('cep').value;
         console.log(cep);
         jQuery.ajax({
-                url:'localhost:5156/Cep/'+cep,
+                //'localhost:5156/Cep/'+cep
+                url:'https://viacep.com.br/ws/'+ cep + '/json/',
                 type: 'GET',
                 data:{},
                 headers: {},
