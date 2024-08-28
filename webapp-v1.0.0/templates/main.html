@@ -13,6 +13,7 @@
 
         <link rel="stylesheet" type="text/css" href="../static/bootstrap-4.3.1/css/bootstrap.min.css">
         <script type="text/javascript" src="../static/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+        <!-- <script type="text/javascript" src="../static/assets/js/base.js"></script> -->
         
         <script type="text/javascript" src="../static/datatable-1.10.22/datatables.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../static/datatable-1.10.22/datatables.min.css">
@@ -40,7 +41,7 @@
         <script type="text/javascript" src="../static/chartjs-2.9.3/js/Chart.bundle.js"></script>
         <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>-->
         
-        <title>Sistema de Produção</title>
+        <title>Sistema de Consulta</title>
         <link rel="shortcut icon" href="../static/assets/images/api.png">
     </head>
     <body>
@@ -69,112 +70,160 @@
                 </ul>
             </div>
         </nav>
-        <!-- card CEP -->
-        <div class="row justify-content-center text-black">
-            <div class="card text-black o-hidden bg-light border-info h-100" style="width: 50rem;">
+        <div class="row justify-content-center text-black " style="margin-top: 10px;">
+            <!-- card CEP -->
+            <div class="card text-black o-hidden bg-light border-info h-100 px-2" style="width: 50rem; ">
                 <div class="card-body">
-                    <p id="escrever">
+                    <p id="escreverCep">
                     
                     </p>
-                    <div class="row justify-content-center">
-                        <form id="formulario">
-                            <input type="text" class="form-control" id="cep">
-                            <button type="submit" class="btn btn-success" id="iniciar-parada"><i class="fas fa-play"></i> </button>
+                    <div class="row form-group justify-content-center">
+                        <form id="formularioCep">
+                            
+                            <div class="d-flex justify-content-center ">
+                                <label for="inputCep" class="col-form-label">CEP: </label>
+                                <input type="text" id="inputCep" class="form-control">
+                                <div class="d-flex justify-content-center col-sm-2">
+                                    <button type="submit" class="btn btn-success" id="cepButton"><i class="fas fa-play"></i> </button>
+                                </div>
+                            </div>
+                            
                         </form>
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="row">
-                            <label for="inputAddress">Bairro</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                        </div>  
-                    </div>
-                    
-                    <div class="row justify-content-center">
-                        <div class="row">
-                            <div class="row col-6">
-                                <h5>
-                                    CEP:
-                                </h5>
-                            </div>
-                            <div class="row">
-                            
-                                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                            </div>
-                            
-                            
+                    <div class="form-group row">
+                        <label for="inputBairro" class="col-sm-2 col-form-label">Bairro:</label>
+                        <div class="col-sm-10">
+                          <output type="text" class="form-control" id="inputBairro" placeholder="Bairro">
                         </div>
-                        
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputRua" class="col-sm-2 col-form-label">Rua:</label>
+                        <div class="col-sm-10">
+                          <output type="text" class="form-control" id="inputRua" placeholder="Rua">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputLocalidade" class="col-sm-2 col-form-label">Localidade:</label>
+                        <div class="col-sm-10">
+                          <output type="text" class="form-control" id="inputLocalidade" placeholder="Localidade">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputUf" class="col-sm-2 col-form-label">UF:</label>
+                        <div class="col-sm-10">
+                          <output type="text" class="form-control" id="inputUf" placeholder="Uf">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--Card CNPJ-->
-        <div class="row justify-content-center text-black">
-            <div class="card text-black o-hidden bg-light border-info h-100" style="width: 50rem;">
+            <!--Card CNPJ-->
+            <div class="card text-black o-hidden bg-light border-info h-100 px-2" style="width: 50rem;">
                 <div class="card-body">
-                    <p id="escrever">
+                    <p id="escreverCnpj">
                     
                     </p>
-                    <div class="row justify-content-center">
-                        <form id="formulario">
-                            <input type="text" class="form-control" id="cnpj">
-                            <button type="submit" class="btn btn-success" id="iniciar-parada"><i class="fas fa-play"></i> </button>
+                    <div class="row form-group justify-content-center">
+                        <form id="formularioCnpj">
+                            
+                            <div class="d-flex justify-content-center ">
+                                <label for="inputCnpj" class="col-form-label">CNPJ: </label>
+                                <input type="text" id="inputCnpj" class="form-control">
+                                <div class="d-flex justify-content-center col-sm-2">
+                                    <button type="submit" class="btn btn-success" id="cnpjButton"><i class="fas fa-play"></i> </button>
+                                </div>
+                            </div>
+                            
                         </form>
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="row">
-                            <label for="inputAddress">Bairro</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                        </div>  
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Nome:</label>
+                        <div class="col-sm-10">
+                          <output type="text" class="form-control" id="inputName" placeholder="Nome">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputSize" class="col-sm-2 col-form-label">Tamanho:</label>
+                        <div class="col-sm-10">
+                          <output type="text" class="form-control" id="inputSize" placeholder="Size">
+                        </div>
                     </div>
                     
-                    <div class="row justify-content-center">
-                        <div class="row">
-                            <div class="row col-6">
-                                <h5>
-                                    CEP:
-                                </h5>
-                            </div>
-                            <div class="row">
-                            
-                                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                            </div>
-                            
-                            
+                    <div class="form-group row">
+                        <label for="inputCity" class="col-sm-2 col-form-label">Localidade:</label>
+                        <div class="col-sm-10">
+                          <output type="text" class="form-control" id="inputCity" placeholder="Localidade">
                         </div>
-                        
                     </div>
+                    <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">E-mail:</label>
+                        <div class="col-sm-10">
+                          <output type="text" class="form-control" id="inputEmail" placeholder="Uf">
+                        </div>
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>
     </body>
 
-<script>
-    var cep = '01001-000';
-    var area = document.getElementById('escrever');
-    var form = document.getElementById('formulario');
-    form.addEventListener('submit', function(e){
-        e.preventDefault();
-        cep = document.getElementById('cep').value;
-        console.log(cep);
-        jQuery.ajax({
-                //'localhost:5156/Cep/'+cep
-                url:'https://viacep.com.br/ws/'+ cep + '/json/',
-                type: 'GET',
-                data:{},
-                headers: {},
-                success:  function(response){
-                    console.log(response);
-                    
-                    document.getElementById("escrever").innerHTML = response['bairro'];
-                    
-                    
-                }
-        });
-    });
-    
-
-</script>
-
 </html>
+<script>
+/***************************************** FUNCTIONS *****************************************/
 
+//Card CNPJ-->
+var cnpj = '62173620008750';
+var area = document.getElementById('escreverCnpj');
+var form = document.getElementById('formularioCnpj');
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    cnpj = document.getElementById('inputCnpj').value;
+    console.log(cnpj);
+    jQuery.ajax({
+        //'helper-api-dotnet-06.fly.dev/cnpj/completo/'+cep
+        url:'https://api.cnpja.com/office/'+ cnpj,
+        type: 'GET',
+        data:{},
+        headers: {'Authorization': 'b43ce2c8-703c-427d-9ebc-a1d895c0e6b7-8b0703e5-b5b4-4c27-8550-287aa797af63'},
+        success:  function(response){
+            console.log(response);
+            
+            document.getElementById("inputName").innerHTML = response['company']['name'];
+            document.getElementById("inputSize").innerHTML = response['company']['size']['acronym'];
+            document.getElementById("inputCity").innerHTML = response['address']['city'] + ' / ' + response['address']['street'];
+            document.getElementById("inputEmail").innerHTML = response['emails']['0']['address'];
+            
+            
+        }
+    });
+});
+
+//Card CPF-->
+var cep = '01001-000';
+var area = document.getElementById('escreverCep');
+var formcep = document.getElementById('formularioCep');
+formcep.addEventListener('submit', function(e){
+    e.preventDefault();
+    cep = document.getElementById('inputCep').value;
+    console.log(cep);
+    jQuery.ajax({
+        //'helper-api-dotnet-06.fly.dev/Cep/'+cep
+        url:'https://viacep.com.br/ws/'+ cep + '/json/',
+        type: 'GET',
+        data:{},
+        headers: {},
+        success:  function(response){
+            console.log(response);
+            
+            document.getElementById("inputBairro").innerHTML = response['bairro'];
+            document.getElementById("inputRua").innerHTML = response['logradouro'];
+            document.getElementById("inputLocalidade").innerHTML = response['localidade'];
+            document.getElementById("inputUf").innerHTML = response['uf'];
+
+            // jQuery("#inputBairro").text(response['bairro']);
+            
+            
+        }
+    });
+});
+</script>
