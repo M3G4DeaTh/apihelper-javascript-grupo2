@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
@@ -180,11 +181,12 @@ form.addEventListener('submit', function(e){
     cnpj = document.getElementById('inputCnpj').value;
     console.log(cnpj);
     jQuery.ajax({
-        //'helper-api-dotnet-06.fly.dev/cnpj/completo/'+cep
-        url:'https://api.cnpja.com/office/'+ cnpj,
+        //'https://api.cnpja.com/office/'+cnpj
+        url:'https://helper-api-dotnet-o6.fly.dev/cnpj/completo/'+ cnpj,
         type: 'GET',
         data:{},
-        headers: {'Authorization': 'b43ce2c8-703c-427d-9ebc-a1d895c0e6b7-8b0703e5-b5b4-4c27-8550-287aa797af63'},
+        //'Authorization': 'b43ce2c8-703c-427d-9ebc-a1d895c0e6b7-8b0703e5-b5b4-4c27-8550-287aa797af63'
+        headers: {},
         success:  function(response){
             console.log(response);
             
@@ -197,7 +199,7 @@ form.addEventListener('submit', function(e){
         }
     });
 });
-
+Access-Control-Allow-Origin: http://siteA.com
 //Card CPF-->
 var cep = '01001-000';
 var area = document.getElementById('escreverCep');
@@ -208,7 +210,7 @@ formcep.addEventListener('submit', function(e){
     console.log(cep);
     jQuery.ajax({
         //'helper-api-dotnet-06.fly.dev/Cep/'+cep
-        url:'https://viacep.com.br/ws/'+ cep + '/json/',
+        url:'https://helper-api-dotnet-o6.fly.dev/Cep/'+ cep,
         type: 'GET',
         data:{},
         headers: {},
