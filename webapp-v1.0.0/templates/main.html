@@ -9,39 +9,22 @@
     <script type="text/javascript" src="../static/jquery-3.5.1/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="../static/jquery-3.5.1/popper.min.js"></script>
     <script type="text/javascript" src="../static/daterangepicker-master/moment.min.js"></script>
-
     <script type="text/javascript" src="../static/daterangepicker-master/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="../static/daterangepicker-master/daterangepicker.css">
-
     <link rel="stylesheet" type="text/css" href="../static/bootstrap-4.3.1/css/bootstrap.min.css">
     <script type="text/javascript" src="../static/bootstrap-4.3.1/js/bootstrap.min.js"></script>
-    <!-- <script type="text/javascript" src="../static/assets/js/base.js"></script> -->
-
     <script type="text/javascript" src="../static/datatable-1.10.22/datatables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../static/datatable-1.10.22/datatables.min.css">
     <script type="text/javascript" src="../static/datatable-1.10.22/dataTables.buttons.min.js"></script>
     <script type="text/javascript" src="../static/datatable-1.10.22/buttons.html5.min.js"></script>
     <script type="text/javascript" src="../static/datatable-1.10.22/jszip.min.js"></script>
-    <!--
-        <script type="text/javascript" src="chartjs-2.9.3/js/hammer.min.js"></script>  
-        <link rel="stylesheet" type="text/css" href="chartjs-2.9.3/css/Chart.min.css">
-        <script type="text/javascript" src="chartjs-2.9.3/js/Chart.bundle.min.js"></script>
-        <script type="text/javascript" src="chartjs-2.9.3/js/chartjs-plugin-zoom.min.js"></script>
-        <script type="text/javascript" src="chartjs-2.9.3/js/chartjs-plugin-labels.js"></script>
-    -->
-
-
     <script type="text/javascript" src="../static/jspdf-2.1.1/jspdf.debug.js"></script>
     <script type="text/javascript" src="../static/jspdf-2.1.1/jspdf.umd.min.js"></script>
     <script type="text/javascript" src="../static/jspdf-2.1.1/jspdf.plugin.autotable.min.js"></script>
     <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Open Sans'>
     <link rel="stylesheet" type="text/css" href="../static/fontawesome/css/all.css">
-
     <link rel="stylesheet" type="text/css" href="../static/assets/css/base.css">
-    <!-- <script type="text/javascript" src="assets/js/base.js"></script> -->
-
     <script type="text/javascript" src="../static/chartjs-2.9.3/js/Chart.bundle.js"></script>
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>-->
 
     <title>Sistema de Consulta</title>
     <link rel="shortcut icon" href="../static/assets/images/api.png">
@@ -75,25 +58,26 @@
             </ul>
         </div>
     </nav>
-    <div class="row justify-content-center text-black " style="margin-top: 10px;">
+    <div class="row justify-content-center text-black" style="margin-top: 10px;">
         <!-- card CEP -->
-        <div class="card text-black o-hidden bg-light border-info h-100 px-2" style="width: 50rem; ">
+        <div class="card text-black o-hidden bg-light border-info h-100 px-2 mx-2 my-2" style="width: 50rem; ">
             <div class="card-body">
                 <p id="escreverCep">
 
                 </p>
                 <div class="row form-group justify-content-center">
                     <form id="formularioCep">
-
                         <div class="d-flex justify-content-center ">
-                            <label for="inputCep" class="col-form-label">CEP: </label>
-                            <input type="text" id="inputCep" class="form-control">
+                            <input type="text" id="inputCep" class="form-control" placeholder="CEP...">
                             <div class="d-flex justify-content-center col-sm-2">
-                                <button type="submit" class="btn btn-success" id="cepButton"><i class="fas fa-play"></i>
+                                <button type="submit" class="btn btn-success" id="cepButton">
+                                    <i id="cepPlay" class="fas fa-play"></i>
+                                    <div id="cepLoader" class="spinner-border spinner-border-sm has-text-success d-none"
+                                        role="status">
+                                    </div>
                                 </button>
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="form-group row">
@@ -123,23 +107,24 @@
             </div>
         </div>
         <!--Card CNPJ-->
-        <div class="card text-black o-hidden bg-light border-info h-100 px-2" style="width: 50rem;">
+        <div class="card text-black o-hidden bg-light border-info h-100 px-2 mx-2 my-2" style="width: 50rem;">
             <div class="card-body">
                 <p id="escreverCnpj">
-
                 </p>
                 <div class="row form-group justify-content-center">
                     <form id="formularioCnpj">
-
                         <div class="d-flex justify-content-center ">
                             <label for="inputCnpj" class="col-form-label">CNPJ: </label>
-                            <input type="text" id="inputCnpj" class="form-control">
+                            <input type="text" id="inputCnpj" class="form-control" placeholder="CNPJ...">
                             <div class="d-flex justify-content-center col-sm-2">
-                                <button type="submit" class="btn btn-success" id="cnpjButton"><i
-                                        class="fas fa-play"></i> </button>
+                                <button type="submit" class="btn btn-success" id="cnpjButton">
+                                    <i id="cnpjPlay" class="fas fa-play"></i>
+                                    <div id="cnpjLoader"
+                                        class="spinner-border spinner-border-sm has-text-success d-none" role="status">
+                                    </div>
+                                </button>
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="form-group row">
@@ -154,7 +139,6 @@
                         <output type="text" class="form-control" id="inputSize" placeholder="Size">
                     </div>
                 </div>
-
                 <div class="form-group row">
                     <label for="inputCity" class="col-sm-2 col-form-label">Localidade:</label>
                     <div class="col-sm-10">
@@ -167,8 +151,6 @@
                         <output type="text" class="form-control" id="inputEmail" placeholder="Uf">
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -176,9 +158,45 @@
 
 </html>
 <script>
+
     /***************************************** FUNCTIONS *****************************************/
 
+    //Card CPF-->
+    const cepLoader = document.getElementById('cepLoader')
+    const cepPlay = document.getElementById('cepPlay')
+    var cep = '01001-000';
+    var area = document.getElementById('escreverCep');
+    var formcep = document.getElementById('formularioCep');
+    formcep.addEventListener('submit', function (e) {
+        e.preventDefault();
+        cep = document.getElementById('inputCep').value;
+        console.log(cep);
+        jQuery.ajax({
+            //'helper-api-dotnet-06.fly.dev/Cep/'+cep
+            url: 'https://helper-api-dotnet-o6.fly.dev/Cep/' + cep,
+            type: 'GET',
+            data: {},
+            headers: {},
+            beforeSend: function () {
+                cepPlay.classList.add('d-none')
+                cepLoader.classList.remove('d-none')
+            },
+            success: function (response) {
+                console.log(response);
+                cepLoader.classList.add('d-none')
+                cepPlay.classList.remove('d-none')
+
+                document.getElementById("inputBairro").innerHTML = response?.neighborhood;
+                document.getElementById("inputRua").innerHTML = response?.street;
+                document.getElementById("inputLocalidade").innerHTML = response?.city;
+                document.getElementById("inputUf").innerHTML = response?.state;
+            }
+        });
+    });
+
     //Card CNPJ-->
+    const cnpjLoader = document.getElementById('cnpjLoader')
+    const cnpjPlay = document.getElementById('cnpjPlay')
     var cnpj = '62173620008750';
     var area = document.getElementById('escreverCnpj');
     var form = document.getElementById('formularioCnpj');
@@ -193,39 +211,19 @@
             data: {},
             //'Authorization': 'b43ce2c8-703c-427d-9ebc-a1d895c0e6b7-8b0703e5-b5b4-4c27-8550-287aa797af63'
             headers: {},
+            beforeSend: function () {
+                cnpjPlay.classList.add('d-none')
+                cnpjLoader.classList.remove('d-none')
+            },
             success: function (response) {
                 console.log(response);
+                cnpjLoader.classList.add('d-none')
+                cnpjPlay.classList.remove('d-none')
 
                 document.getElementById("inputName").innerHTML = response?.company?.name;
                 document.getElementById("inputSize").innerHTML = response?.company?.size?.acronym;
-                document.getElementById("inputCity").innerHTML = response?.address?.city + ' / ' + response.address?.street
+                document.getElementById("inputCity").innerHTML = response?.address?.city + ' / ' + response?.address?.street
                 document.getElementById("inputEmail").innerHTML = response?.emails[0] ? response.emails[0] : "";
-            }
-        });
-    });
-
-    //Card CPF-->
-    var cep = '01001-000';
-    var area = document.getElementById('escreverCep');
-    var formcep = document.getElementById('formularioCep');
-    formcep.addEventListener('submit', function (e) {
-        e.preventDefault();
-        cep = document.getElementById('inputCep').value;
-        console.log(cep);
-        jQuery.ajax({
-            //'helper-api-dotnet-06.fly.dev/Cep/'+cep
-            url: 'https://helper-api-dotnet-o6.fly.dev/Cep/' + cep,
-            type: 'GET',
-            data: {},
-            headers: {},
-            success: function (response) {
-                console.log(response);
-
-                document.getElementById("inputBairro").innerHTML = response?.neighborhood;
-                document.getElementById("inputRua").innerHTML = response?.street;
-                document.getElementById("inputLocalidade").innerHTML = response?.city;
-                document.getElementById("inputUf").innerHTML = response?.state;
-
             }
         });
     });
