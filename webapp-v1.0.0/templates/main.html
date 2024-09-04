@@ -34,7 +34,6 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand justify-content-center"><img class="d-inline-block align-top" height="35"
                 src="../static/assets/images/puc.webp"></a>
-        <!-- <a class="navbar-brand" href="#"><img class="d-inline-block align-top" height="35" src="assets/images/sistema.png"></a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav1" aria-controls="nav1"
             aria-expanded="false" aria-label="Navegação">
             <span class="navbar-toggler-icon"></span>
@@ -62,15 +61,13 @@
         <!-- card CEP -->
         <div class="card text-black o-hidden bg-light border-info h-100 px-2 mx-2 my-2" style="width: 50rem; ">
             <div class="card-body">
-                <p id="escreverCep">
-
-                </p>
                 <div class="row form-group justify-content-center">
                     <form id="formularioCep">
                         <div class="d-flex justify-content-center ">
-                            <input type="text" id="inputCep" class="form-control" placeholder="CEP...">
+                            <input type="text" id="inputCep" class="form-control" placeholder="CEP..."
+                                oninput="validateInputsAndButtons()">
                             <div class="d-flex justify-content-center col-sm-2">
-                                <button type="submit" class="btn btn-success" id="cepButton">
+                                <button type="submit" class="btn btn-success" id="cepButton" disabled>
                                     <i id="cepPlay" class="fas fa-play"></i>
                                     <div id="cepLoader" class="spinner-border spinner-border-sm has-text-success d-none"
                                         role="status">
@@ -78,6 +75,7 @@
                                 </button>
                             </div>
                         </div>
+                        <p class="d-none text-danger small" id="cepError">Oops...CEP não encontrado! ☹️</p>
                     </form>
                 </div>
                 <div class="form-group row">
@@ -109,15 +107,13 @@
         <!--Card CNPJ-->
         <div class="card text-black o-hidden bg-light border-info h-100 px-2 mx-2 my-2" style="width: 50rem;">
             <div class="card-body">
-                <p id="escreverCnpj">
-                </p>
                 <div class="row form-group justify-content-center">
                     <form id="formularioCnpj">
                         <div class="d-flex justify-content-center ">
-                            <label for="inputCnpj" class="col-form-label">CNPJ: </label>
-                            <input type="text" id="inputCnpj" class="form-control" placeholder="CNPJ...">
+                            <input type="text" id="inputCnpj" class="form-control" placeholder="CNPJ..."
+                                oninput="validateInputsAndButtons()">
                             <div class="d-flex justify-content-center col-sm-2">
-                                <button type="submit" class="btn btn-success" id="cnpjButton">
+                                <button type="submit" class="btn btn-success" id="cnpjButton" disabled>
                                     <i id="cnpjPlay" class="fas fa-play"></i>
                                     <div id="cnpjLoader"
                                         class="spinner-border spinner-border-sm has-text-success d-none" role="status">
@@ -125,6 +121,7 @@
                                 </button>
                             </div>
                         </div>
+                        <p class="d-none text-danger small" id="cnpjError">Oops...CNPJ não encontrado! ☹️</p>
                     </form>
                 </div>
                 <div class="form-group row">
@@ -134,7 +131,13 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputSize" class="col-sm-2 col-form-label">Tamanho:</label>
+                    <label for="inputStatus" class="col-sm-2 col-form-label">Status:</label>
+                    <div class="col-sm-10">
+                        <output type="text" class="form-control" id="inputStatus" placeholder="Uf">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputSize" class="col-sm-2 col-form-label">Porte:</label>
                     <div class="col-sm-10">
                         <output type="text" class="form-control" id="inputSize" placeholder="Size">
                     </div>
@@ -143,12 +146,6 @@
                     <label for="inputCity" class="col-sm-2 col-form-label">Localidade:</label>
                     <div class="col-sm-10">
                         <output type="text" class="form-control" id="inputCity" placeholder="Localidade">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputStatus" class="col-sm-2 col-form-label">Condição:</label>
-                    <div class="col-sm-10">
-                        <output type="text" class="form-control" id="inputStatus" placeholder="Uf">
                     </div>
                 </div>
             </div>
@@ -160,29 +157,48 @@
 <script>
 
     /***************************************** FUNCTIONS *****************************************/
+    const inputCep = document.getElementById('inputCep');
+    const cepButton = document.getElementById('cepButton');
 
-    //Card CPF-->
+    const inputCnpj = document.getElementById('inputCnpj');
+    const cnpjButton = document.getElementById('cnpjButton');
+
+    function validateInputsAndButtons() {
+        if (inputCep?.value) inputCep.value = inputCep.value.replace(/[^0-9]+/g, '')
+        if (inputCnpj?.value) inputCnpj.value = inputCnpj.value.replace(/[^0-9]+/g, '')
+
+        if (inputCep?.value?.length === 8) cepButton.disabled = false;
+        else cepButton.disabled = true;
+
+        if (inputCnpj?.value?.length === 14) cnpjButton.disabled = false;
+        else cnpjButton.disabled = true;
+    }
+
+    // CPF-->
     const cepLoader = document.getElementById('cepLoader')
     const cepPlay = document.getElementById('cepPlay')
-    var cep = '01001-000';
-    var area = document.getElementById('escreverCep');
+    const cepError = document.getElementById('cepError')
+
     var formcep = document.getElementById('formularioCep');
     formcep.addEventListener('submit', function (e) {
         e.preventDefault();
         cep = document.getElementById('inputCep').value;
-        console.log(cep);
         jQuery.ajax({
-            //'helper-api-dotnet-06.fly.dev/Cep/'+cep
-            url: 'https://helper-api-dotnet-o6.fly.dev/Cep/' + cep,
+            url: 'https://helper-api-dotnet-o6.fly.dev/Cep/' + cep.replace(/[^0-9]+/g, ''),
             type: 'GET',
             data: {},
             headers: {},
             beforeSend: function () {
                 cepPlay.classList.add('d-none')
                 cepLoader.classList.remove('d-none')
+                cepError.classList.add('d-none')
+            },
+            error: function () {
+                cepLoader.classList.add('d-none')
+                cepPlay.classList.remove('d-none')
+                cepError.classList.remove('d-none')
             },
             success: function (response) {
-                console.log(response);
                 cepLoader.classList.add('d-none')
                 cepPlay.classList.remove('d-none')
 
@@ -194,29 +210,31 @@
         });
     });
 
-    //Card CNPJ-->
+    // CNPJ-->
     const cnpjLoader = document.getElementById('cnpjLoader')
     const cnpjPlay = document.getElementById('cnpjPlay')
-    var cnpj = '62173620008750';
-    var area = document.getElementById('escreverCnpj');
+    const cnpjError = document.getElementById('cnpjError')
+
     var form = document.getElementById('formularioCnpj');
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         cnpj = document.getElementById('inputCnpj').value;
-        console.log(cnpj);
         jQuery.ajax({
-            //'https://api.cnpja.com/office/'+cnpj
-            url: 'https://helper-api-dotnet-o6.fly.dev/cnpj/completo/' + cnpj,
+            url: 'https://helper-api-dotnet-o6.fly.dev/cnpj/completo/' + cnpj.replace(/[^0-9]+/g, ''),
             type: 'GET',
             data: {},
-            //'Authorization': 'b43ce2c8-703c-427d-9ebc-a1d895c0e6b7-8b0703e5-b5b4-4c27-8550-287aa797af63'
             headers: {},
             beforeSend: function () {
                 cnpjPlay.classList.add('d-none')
                 cnpjLoader.classList.remove('d-none')
+                cnpjError.classList.add('d-none')
+            },
+            error: function () {
+                cnpjLoader.classList.add('d-none')
+                cnpjPlay.classList.remove('d-none')
+                cnpjError.classList.remove('d-none')
             },
             success: function (response) {
-                console.log(response);
                 cnpjLoader.classList.add('d-none')
                 cnpjPlay.classList.remove('d-none')
 
